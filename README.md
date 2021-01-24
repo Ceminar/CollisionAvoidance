@@ -22,10 +22,16 @@ pointAhead = position + direction * maxAhead
 ```
 The ```maxAhead``` defines how far the AI can see ahead.  
 Just as explained in the arcticle, we get a problem when the object is closer then the ```maxAhead```.
-We could solve this by getting a second or third point on the line. The problem I faced whas that the AI could not see the object when it was next to the points. Something that could be solved with the second solution. A simple rectangle is not hard to look for an overlapping, but it was we needed to do a lot more to do this on a transformed rectangle. Which gave me an idea of a combined solution.  
+We could solve this by getting a second or third point on the line.  
+
+The problem I faced whas that the AI could not see the object when it was next to the points. 
+![](AheadMiss.jpg)  
+
+Something that could be solved with the second solution. A simple rectangle is not hard to look for an overlapping, but we need to do a lot more to do this on a transformed rectangle. Which gave me an idea of a combined solution.  
 The rectangle option gave me two ideas for the point based solution.
 1. Instead of using multiple points, we can check if the line overlaps the object.
 2. Having two lines, each on one side of the AI.  
+![](DoubleAhead.jpg)
 
 ```
 Obstacle* AvoidObstacle::findObstacleToAvoid(Elite::Vector2 leftPos, Elite::Vector2 rightPos)
@@ -145,9 +151,11 @@ normalize(steering);
 steering *= maxAvoidForce;
 ```
 The ```maxAvoidForce``` is like the name suggests the maximum force that will affect the AI's steering velocity.  
+![](SimpleSolution.jpg)
 
 This does work to a certain extend, but is not practical, because the AI loses his momentum with the vector.  
 To nullify this, we need the perpendicular of the current direction. which can be obtained by the ```antiClockWise``` or ```clockWise``` matrix and the current direction.
+![](EndSolution.jpg)
 ```
 steering = antiClockWise * direction;
 ```
