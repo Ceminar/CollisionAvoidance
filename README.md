@@ -206,18 +206,16 @@ We can achieve this by making a vector that has a value between 0 and 1 and mult
 float dynamicLength = linearVelocity.Magnitude() / MaxLinearSpeed;
 Elite::Vector2 aheadVector = direction * dynamicLength * m_MaxAhead;
 ```
-If the AI is slower, it is not needed to look very far.
+If the AI is slower, it is not needed to look very far.  
+
 2. Change the avoidance force acording to the object.
 Depending on the size of the object, we need to adjust or avoidance force.
 On smaller objects it is not a real problem, but when the size becomes very large, if the force is not changed, we can still cause a collision because the AI will be faster then it can adjust his direction.
 In order to do this, we can use the obstacles radius together with the current velocity of the AI.
 ```
 steering *= radiusCircle * linearVelocity.Magnitude();
-```  
-3. We can also add 2 more lines and place these in a cone so there is still some distance bewteen the AI and the object.
-This one is not included in the files.
-
+```
 ## Result
-
+![](Hnet.com-image.gif)
 
 ## Conclusion
