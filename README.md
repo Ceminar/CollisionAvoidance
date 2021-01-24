@@ -155,12 +155,12 @@ The ```maxAvoidForce``` is like the name suggests the maximum force that will af
 
 This does work to a certain extend, but is not practical, because the AI loses his momentum with the vector.  
 To nullify this, we need the perpendicular of the current direction. which can be obtained by the ```antiClockWise``` or ```clockWise``` matrix and the current direction.
-![](EndSolution.jpg)
 ```
 steering = antiClockWise * direction;
 ```
 The result is that the AI avoid the obstacle without losing so much of his velocity. But now the AI only goes in one direction.
 We can avoid this by looking if the center of the circle is on the left or right side of the AI. That is something that the cross product is able to tell us.
+![](EndSolution.jpg)
 ```
 Elite::Vector2 aiToCenter = position - centerCircle;
 float sign = Cross(aheadVector, aiToCenter);
@@ -225,6 +225,8 @@ In order to do this, we can use the obstacles radius together with the current v
 steering *= radiusCircle * linearVelocity.Magnitude();
 ```
 ## Result
+The result we see shows us the smooth movement to our seeked point.
 ![](Hnet.com-image.gif)
 
-## Conclusion
+## Conclusion / Future projects
+A collision avoidance first sounds difficult, but once you understand how it works it is easy to alter where needed according to the needs of the project. The implementation shown here is good for static objects, but changes are needed if it has to be implemented for non-static objects or bots, because of the visibility.
