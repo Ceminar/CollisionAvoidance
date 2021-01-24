@@ -12,7 +12,8 @@ In order to do this, you need to have a point the AI has to go to, like the seek
 ## Look for the possible collisions
 The first thing is to know which object do we have to avoid.
 For this I got two option.
-1. Using an ahead vector explained by Fernando Bevilacqua [here](https://gamedevelopment.tutsplus.com/tutorials/understanding-steering-behaviors-collision-avoidance--gamedev-7777#:~:text=Introduction,to%20calculate%20the%20avoidance%20force.)
+1. Using an ahead vector explained by Fernando Bevilacqua [here](https://gamedevelopment.tutsplus.com/tutorials/understanding-steering-behaviors-collision-avoidance--gamedev-7777#:~:text=Introduction,to%20calculate%20the%20avoidance%20force.)  
+![](Ahead.jpg)
 2. Using a rectangle explained [here](https://www.red3d.com/cwr/steer/Obstacle.html)  
 
 At first I tried using the first implementation, this uses a point to look for overlapping an object.
